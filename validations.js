@@ -15,12 +15,15 @@ export const createPostsValidation = [
     // body("text2","Введено невірний формат даних").isLength({min:3}).isString(),
     body("price","Введено невірний формат даних").isNumeric(),
     body("category","Введено невірний формат даних").isLength({min:3}).isString(),
-    body("imgmain","Введено невірний формат даних").isString(),
-    body('imagesSlider').isArray().withMessage('Масив фотографій повинен бути масивом').custom((value, { req }) => {
-        if (!value.every(item => typeof item === 'string')) {
-            throw new Error('Масив фотографій повинен містити тільки стрічки');
-        }
-        return true;
+    body("imgmain","Введено невірний формат даних").isString({min:3}),
+    body('imagesSlider')
+    .isArray().withMessage('Масив фотографій повинен бути масивом')
+    .notEmpty().withMessage('Масив фотографій не повинен бути порожнім')
+    .custom((value, { req }) => {
+      if (!value.every(item => typeof item === 'string')) {
+        throw new Error('Масив фотографій повинен містити тільки стрічки');
+      }
+      return true;
     }),
 ];
     // body("imgsecond","Введено невірний формат даних").isString(),
