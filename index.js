@@ -70,7 +70,7 @@ mongoose.connect(process.env.MONGODB_URI,{
       itemsText += `${title} x ${count} - ${price} грн\n`;
     }
   
-    const telegramMessage = `Name: ${fullName}\nPhone: ${phone}\nEmail: ${email}\nCity: ${city}\nDistrictDelivery: ${number} ${city}\n${itemsText}\nTotalCount: ${totalCount}\nTotalPrice: ${cartTotalPrice}`;
+    const telegramMessage = `Name: ${fullName}\nPhone: ${phone}\nEmail: ${email}\nCity: ${city}\nDistrictDelivery: ${number}\n${itemsText}\nTotalCount: ${totalCount}\nTotalPrice: ${cartTotalPrice}`;
     sendTelegramMessage(chatId, telegramMessage);
     res.send('Form submitted successfully!')
   });
